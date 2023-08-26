@@ -1,0 +1,120 @@
+<!-- <app-product
+  [prod]="selectedProduct"
+  (unSelectEvent)="unselectProduct($event)"
+  *ngIf="selectedProduct"
+></app-product> -->
+
+<!-- <div class="card mb-3 p-1 border border-warning" *ngIf="selectedProduct">
+  <div class="row">
+    <div class="col-3">
+      <img
+        src="/assets/{{ selectedProduct.imageUrl }}"
+        alt=""
+        class="img-fluid rounded-start"
+      />
+    </div>
+    <div class="col-9">
+      <div class="card-body">
+        <h5 class="card-title">{{ selectedProduct.name }}</h5>
+        <p class="card-text">
+          {{ selectedProduct.description }}
+          <button (click)="unselectProduct()" class="btn btn-primary">
+            Seçimi Kaldir
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div *ngIf="products.length > 0">
+  <ng-template
+    [ngTemplateOutlet]="productList"
+    [ngTemplateOutletContext]="{ products: products }"
+  >
+  </ng-template>
+  <!-- <ng-template
+    [ngTemplateOutlet]="productList2"
+    [ngTemplateOutletContext]="{ products: products }"
+  >
+  </ng-template> -->
+</div>
+
+<!-- <ng-template #noProducts>
+  <div class="alert alert-warning" *ngIf="products.length == 0">
+    Bu Listede Herhangi Bir Ürün Bulunmamaktadir.
+  </div>
+</ng-template> -->
+
+<ng-template #productList let-products="products">
+  <h2>En Çok Satanlar</h2>
+  <div *ngFor="let product of products" class="card mb-3">
+    <div *ngIf="product.isActive">
+      <div class="row">
+        <div class="col-3">
+          <img
+            src="/assets/{{ product.imageUrl }}"
+            alt=""
+            class="img-fluid rounded-start"
+          />
+        </div>
+        <div class="col-9">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">
+              {{ product.description }}
+              <a routerLink="/products/{{ product.Id }}" class="btn btn-primary"
+                >Ürün Detayi</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!--<ng-template #productList2 let-products="products">
+  <h2>En Beğenilenler</h2>
+  <div class="row">
+    <div *ngFor="let product of products" class="col-3">
+      <div *ngIf="product.isActive" class="card mb-3">
+        <img src="/assets/{{ product.imageUrl }}" alt="" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">
+            {{ product.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template> -->
+
+<!-- <div class="card" *ngIf="product.isActive">
+  <div class="row">
+    <div class="col-3">
+      <img
+        src="/assets/71T5NVOgbpL._SL1500_.jpg"
+        alt=""
+        class="img-fluid rounded-start"
+      />
+    </div>
+    <div class="col-9">
+      <div class="card-body">
+        <h5 class="card-title">IPhone 14 ProMax</h5>
+        <p class="card-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
+          impedit illo, voluptatem sit excepturi cumque deserunt numquam nemo
+          quaerat officiis?
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul *ngIf="productList.length > 1">
+  <li *ngFor="let p of productList">
+    {{ p }}
+  </li>
+</ul> -->
